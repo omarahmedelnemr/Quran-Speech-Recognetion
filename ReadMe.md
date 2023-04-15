@@ -20,4 +20,4 @@
 4. then the `cnn.py` Auto detect the Classes from traing and test sets, and then Train The Model and Save the Final Trained Model in `Models` Folder
 5. the rest of the Folders and Files are just for trying random Things (they are not important)
 
-You Can See The Dataset in Drive: (https://drive.google.com/drive/folders/1WR7zvQTTnycdMmPV2PP4CaTFhawdiQp1?usp=sharing){:target="_blank" rel="noopener"}
+You Can See The Dataset in Drive: [go](https://drive.google.com/drive/folders/1WR7zvQTTnycdMmPV2PP4CaTFhawdiQp1?usp=sharing){:target="_blank" rel="noopener"}
