@@ -44,10 +44,10 @@ buffer = []
 
 # Load the model 1
 model1_name = "Teachable Machine"
-model1 = load_model("./Models/m5/keras_model.h5", compile=False)
+model1 = load_model("./Models/m9/keras_model.h5", compile=False)
 print("model ,", model1)
 # Load the labels
-class_names = open("./Models/m5/labels.txt", "r").readlines()
+class_names = open("./Models/m9/labels.txt", "r").readlines()
 
 # Create the array of the right shape to feed into the keras model
 # The 'length' or number of images you can put into the array is
@@ -55,9 +55,7 @@ class_names = open("./Models/m5/labels.txt", "r").readlines()
 dataImg = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
 
-# Load the model 1
-model2_name = "Our Own CNN"
-model2 = load_model('./Models/Edgham1')
+
 
 
 # Clear the console
@@ -99,11 +97,11 @@ while n < 1:
             # Write the audio data to the WAV file
             wav_file.writeframes(data)
 
-        pad_ms = int(3*1000)
-        audio = AudioSegment.from_wav('output.wav')
-        silence = AudioSegment.silent(duration=pad_ms-len(audio)+1)
-        padded = audio + silence  # Adding silence after the audio
-        padded.export('output.wav', format='wav')
+        # pad_ms = int(5*1000)
+        # audio = AudioSegment.from_wav('output.wav')
+        # silence = AudioSegment.silent(duration=pad_ms-len(audio)+1)
+        # padded = audio + silence  # Adding silence after the audio
+        # padded.export('output.wav', format='wav')
 
         signal, sr = librosa.load(
             'output.wav', sr=22050)
@@ -115,10 +113,11 @@ while n < 1:
         my_hop_len = 512
 
         # MFCCs
+        D = np.abs(librosa.stft(signal))
+        mfcc = librosa.amplitude_to_db(D, ref=np.max)
+        # mfcc = librosa.feature.mfcc(y=signal, sr=sr, n_mfcc=13, n_fft=2048, hop_length=512)
+        # # librosa.feature.mfcc
 
-        mfcc = librosa.feature.mfcc(
-            y=signal, sr=sr, n_mfcc=13, n_fft=2048, hop_length=512)
-        # librosa.feature.mfcc
         librosa.display.specshow(mfcc, sr=sr, hop_length=my_hop_len)
         plt.savefig('output.png')
         # Clear the buffer
@@ -127,7 +126,7 @@ while n < 1:
         # Disable scientific notation for clarity
         np.set_printoptions(suppress=True)
 
-        # Replace this with the path to your image
+        # Open Saved Image
         image = Image.open("output.png").convert("RGB")
 
         # resizing the image to be at least 224x224 and then cropping from the center
@@ -154,18 +153,6 @@ while n < 1:
         print("Class:", class_name[2:], end="")
         print("Confidence Score:", confidence_score)
 
-        # Predeict FOr Model2
-        img_for_Model2 = load_img("./output.png", target_size=(64, 64))
-        img_for_Model2 = img_to_array(img_for_Model2)
-
-        img_for_Model2 = np.expand_dims(img_for_Model2, axis=0)
-        result = model2.predict(img_for_Model2)
-
-        index = np.argmax(result)
-        class_name = class_names[index]
-        confidence_score = result[0][index]
-        print("Model 2 ({}): ".format(model2_name))
-        print("Class:", class_name[2:], end="")
         n += 1
     # Wait for a short time before taking the next audio sample
     p.get_default_output_device_info()

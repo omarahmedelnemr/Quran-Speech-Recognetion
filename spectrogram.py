@@ -8,8 +8,8 @@ import random
 train_to_test = 0.9
 
 Extened = ''
-# DataPath = './{}Data 2'.format(Extened)
-DataPath = './{}PreprossedData'.format(Extened)
+DataPath = './{}Data'.format(Extened)
+# DataPath = './{}PreprossedData'.format(Extened)
 SpecrtoPath = './{}Spectro'.format(Extened)
 testSpectroPath = './TestSpectro'
 foldersArray = os.listdir(DataPath)
@@ -32,9 +32,10 @@ for folder in foldersArray:
         my_hop_len = 512
 
         # MFCCs
-        mfcc = librosa.feature.mfcc(y=signal, sr=sr, n_mfcc=13, n_fft=512, hop_length=512)
-
-        librosa.display.specshow(mfcc, sr=sr, hop_length=my_hop_len)
+        # mfcc = librosa.feature.mfcc(y=signal, sr=sr, n_mfcc=13, n_fft=512, hop_length=512)
+        D = np.abs(librosa.stft(signal))
+        spec = librosa.amplitude_to_db(D, ref=np.max)
+        librosa.display.specshow(spec, sr=sr, hop_length=my_hop_len)
 
         # Randomlly Split The Code into Train and Test Sets With A Percentage
         r = random.randint(0,1)

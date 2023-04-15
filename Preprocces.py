@@ -32,23 +32,18 @@ for folder in allFolders:
     sampleArray = os.listdir('{}/{}/'.format(origin, folder))
     pad_ms = int(math.ceil(maxDuration)*1000)
     for sample in sampleArray:
-        audio = AudioSegment.from_wav(
-            '{}/{}/{}'.format(origin, folder, sample))
+        audio = AudioSegment.from_wav('{}/{}/{}'.format(origin, folder, sample))
         if pad_ms < len(audio):
-            print
-            print("Audio with {} was longer that {} second.".format(
-                len(audio), pad_ms))
+            print("Audio with {} was longer that {} second.".format(len(audio), pad_ms))
             continue
         silence = AudioSegment.silent(duration=pad_ms-len(audio)+1)
 
         padded = audio + silence  # Adding silence after the audio
         try:
-            padded.export(
-                '{}/{}/{}'.format(distiny, folder, sample), format='wav')
+            padded.export('{}/{}/{}'.format(distiny, folder, sample), format='wav')
         except:
             os.makedirs('{}/{}'.format(distiny, folder))
-            padded.export(
-                '{}/{}/{}'.format(distiny, folder, sample), format='wav')
+            padded.export('{}/{}/{}'.format(distiny, folder, sample), format='wav')
 
     print("{} Done".format(folder))
 print('All Done')
