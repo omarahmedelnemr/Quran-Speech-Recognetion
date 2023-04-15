@@ -1,4 +1,10 @@
+output.wav
+output.png
+
+#old Data
 /Data 1
+
+#any Folder with Sound Data or Spectrogram
 /Self Recorded/*
 /Data/*
 /PreprossedData/*

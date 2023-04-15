@@ -52,5 +52,4 @@ if input("Start Model Training? (Y/N) ").lower() == 'y':
     clear_console()
     subprocess.run(["python3", 'cnn 2.py'])
 
-
 print("All Done !")

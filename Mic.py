@@ -54,8 +54,8 @@ class_names = open("./Models/m5/labels.txt", "r").readlines()
 # determined by the first position in the shape tuple, in this case 1
 dataImg = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
-# Load the model 1
 
+# Load the model 1
 model2_name = "Our Own CNN"
 model2 = load_model('./Models/Edgham1')
 
@@ -70,6 +70,7 @@ else:
 n = 0
 
 print('Say Somthing ... ')
+
 # Open a stream to listen to the microphone
 stream = p.open(format=pyaudio.paInt16, channels=1, rate=44100,
                 input=True, frames_per_buffer=CHUNK)
@@ -165,7 +166,6 @@ while n < 1:
         confidence_score = result[0][index]
         print("Model 2 ({}): ".format(model2_name))
         print("Class:", class_name[2:], end="")
-        print("Confidence Score:", confidence_score)
         n += 1
     # Wait for a short time before taking the next audio sample
     p.get_default_output_device_info()
