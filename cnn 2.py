@@ -35,6 +35,16 @@ print(training_set)
 print(test_set)
 print('--------------------------------------------')
 
+cnn = tf.keras.models.Sequential()
+cnn.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3,activation='relu', input_shape=[64, 64, 3]))
+cnn.add(tf.keras.layers.MaxPool2D(pool_size=2, strides=2))
+cnn.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3, activation='relu'))
+cnn.add(tf.keras.layers.MaxPool2D(pool_size=2, strides=2))
+cnn.add(tf.keras.layers.Flatten())
+cnn.add(tf.keras.layers.Dense(units=128, activation='relu'))
+cnn.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
+cnn.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+cnn.fit(x=training_set, batch_size=16 ,validation_data=test_set, epochs=100)
 
 cnn = tf.keras.models.Sequential()
 cnn.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3,activation='relu', input_shape=[64, 64, 3]))
@@ -45,7 +55,15 @@ cnn.add(tf.keras.layers.Flatten())
 cnn.add(tf.keras.layers.Dense(units=128, activation='relu'))
 cnn.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
 cnn.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-cnn.fit(x=training_set, validation_data=test_set, epochs=100)
+cnn.fit(x=training_set, batch_size=16 ,validation_data=test_set, epochs=100)
+
+print("Done Training!")
+
+cnn.save('Models/Edgham1')
+print("Model Saved!")
+
+
+cnn.evaluate(Validation_set)
 
 print("Done Training!")
 

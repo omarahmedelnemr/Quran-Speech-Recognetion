@@ -8,8 +8,8 @@ import random
 train_to_test = 0.9
 
 Extened = ''
-DataPath = './{}Data'.format(Extened)
-# DataPath = './{}PreprossedData'.format(Extened)
+# DataPath = './{}Data'.format(Extened)
+DataPath = './{}PreprossedData'.format(Extened)
 SpecrtoPath = './{}Spectro'.format(Extened)
 testSpectroPath = './TestSpectro'
 foldersArray = os.listdir(DataPath)
