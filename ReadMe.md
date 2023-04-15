@@ -21,4 +21,4 @@
 5. the rest of the Folders and Files are just for trying random Things (they are not important)
 
 You Can See The Dataset in Drive: 
-[Drive Link](https://drive.google.com/drive/folders/1WR7zvQTTnycdMmPV2PP4CaTFhawdiQp1?usp=sharing){:target="_blank" rel="noopener"}
+[Drive Link](https://drive.google.com/drive/folders/1WR7zvQTTnycdMmPV2PP4CaTFhawdiQp1?usp=sharing)
