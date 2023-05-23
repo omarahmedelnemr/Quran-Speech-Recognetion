@@ -5,13 +5,17 @@ import numpy as np
 import os
 import random
 
-train_to_test = 0.9
+train_to_test = 0.7
 
-Extened = ''
-# DataPath = './{}Data'.format(Extened)
-DataPath = './{}PreprossedData'.format(Extened)
-SpecrtoPath = './{}Spectro'.format(Extened)
-testSpectroPath = './TestSpectro'
+# DataPath = './3 to 3/Testing/'
+# SpecrtoPath = './3 to 3 Spec/testing/train/'
+# testSpectroPath = './3 to 3 Spec/testing/test/'
+
+
+DataPath = './PreprossedData'
+SpecrtoPath = './Spectro'
+testSpectroPath = './TestSpectro/'
+
 foldersArray = os.listdir(DataPath)
 
 for folder in foldersArray:

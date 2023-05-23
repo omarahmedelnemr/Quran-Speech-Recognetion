@@ -7,7 +7,8 @@ TestSomthing.py
 
 #old Data
 /Data 1
-
+/Models/*
+!/Models/Best
 #any Folder with Sound Data or Spectrogram
 /Self Recorded/*
 /Data/*
@@ -15,3 +16,19 @@ TestSomthing.py
 /Spectro/*
 /TestSpectro/*
 /Validat/*
+/tSpectro
+/Test
+/test
+/3 to 3 Spec
+/3 to 3 
+/Cut
+
+asr_inference_with_ctc_decoder_tutorial.ipynb
+detect_and_write_the_difference.py
+forced_alignment_tutorial.ipynb
+myname.wav
+output.mp3
+testing.py
+TestTheModel CNN.py
+TestTheModel.py
+vvv.txt

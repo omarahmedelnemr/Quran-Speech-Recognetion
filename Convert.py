@@ -13,23 +13,24 @@ import os
 from os import path
 from pydub import AudioSegment
 import shutil
+data_origin = './3 to 3/training'
 
-folders = os.listdir('./Self Recorded')
+folders = os.listdir(data_origin)
 # print("obj: ",obj)
 for folder in folders:
-    fileNames = os.listdir('./Self Recorded/{}'.format(folder))
+    fileNames = os.listdir('{}/{}'.format(data_origin,folder))
     for file in fileNames:
         if file[len(file)-3:] == 'wav':
             try:
                 os.makedirs('./Data/{}/'.format(folder))
             except:
                 pass
-            shutil.copyfile('./Self Recorded/{}/{}'.format(folder, file),
+            shutil.copyfile('{}/{}/{}'.format(data_origin,folder, file),
                             './Data/{}/{}'.format(folder, file))
             continue
         elif file[len(file)-3:] == 'mp3':
             sound = AudioSegment.from_file(
-                ('./Self Recorded/{}/{}'.format(folder, file)), format='mp3')
+                ('{}/{}/{}'.format(data_origin,folder, file)), format='mp3')
             try:
                 sound.export(
                     './Data/{}/{}.wav'.format(folder, file.split('.')[0]), format='wav')
@@ -39,7 +40,7 @@ for folder in folders:
                     './Data/{}/{}.wav'.format(folder, file.split('.')[0]), format='wav')
         elif file[len(file)-3:] == 'm4a':
             sound = AudioSegment.from_file(
-                ('./Self Recorded/{}/{}'.format(folder, file)), format='m4a')
+                ('{}/{}/{}'.format(data_origin,folder, file)), format='m4a')
             try:
                 sound.export(
                     './Data/{}/{}.wav'.format(folder, file.split('.')[0]), format='wav')

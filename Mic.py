@@ -6,7 +6,7 @@ import numpy as np
 import pyaudio
 import wave
 from pydub import AudioSegment
-
+import tensorflow as tf
 from keras.models import load_model  # TensorFlow is required for Keras to work
 from PIL import Image, ImageOps  # Install pillow instead of PIL
 
@@ -44,10 +44,10 @@ buffer = []
 
 # Load the model 1
 model1_name = "Teachable Machine"
-model1 = load_model("./Models/m9/keras_model.h5", compile=False)
+model1 = load_model("./Models/teachable nonPre/keras_model.h5", compile=False)
 print("model ,", model1)
 # Load the labels
-class_names = open("./Models/m9/labels.txt", "r").readlines()
+class_names = open("./Models/teachable nonPre/labels.txt", "r").readlines()
 
 # Create the array of the right shape to feed into the keras model
 # The 'length' or number of images you can put into the array is
