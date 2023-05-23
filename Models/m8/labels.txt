@@ -1,2 +1,0 @@
-0 Right
-1 Wrong
